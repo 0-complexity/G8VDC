@@ -75,6 +75,10 @@
         .get($routeParams.machineId)
         .then(function(data) {
           $scope.machine = data;
+          if ($scope.currentSpace.id != data.cloudspaceid) {
+            $scope.currentSpace.id = data.cloudspaceid;
+            $scope.loadSpaces();
+          }
           $timeout(function() {
             LoadingDialog.hide();
           }, 1500);
