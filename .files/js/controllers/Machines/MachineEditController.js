@@ -182,9 +182,13 @@
     function machineACL(acl) {
       if ($scope.currentUser && acl && $scope.currentAccount.status !== 'DISABLED') {
         $scope.currentUser.acl.machine = 0;
-        var currentUserAccessright = _.find($scope.machine.acl , function(acl) {
+        var ace = _.find($scope.machine.acl , function(acl) {
               return acl.userGroupId === $scope.currentUser.username;
-            }).right.toUpperCase();
+            });
+        var currentUserAccessright = '';
+        if (ace) {
+          currentUserAccessright = ace.right.toUpperCase();
+        }
         if (currentUserAccessright === 'R') {
           $scope.currentUser.acl.machine = 1;
         }else if (currentUserAccessright.search(/R|C|X/) !== -1 && currentUserAccessright.search(/D|U/) === -1) {

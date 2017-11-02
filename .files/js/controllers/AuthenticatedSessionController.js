@@ -149,9 +149,17 @@
         }
       }
       if (!currentCloudSpaceFromList) {
-        currentCloudSpaceFromList = _.first($scope.cloudspaces);
+        CloudSpace.get($scope.currentSpace.id).then(function(data) {
+          $scope.setCurrentCloudspace(data);
+        }, function(reason) {
+            if (reason.status === 403) {
+              $scope.setCurrentCloudspace(_.first($scope.cloudspaces));
+            }
+        });
+      } else {
+        $scope.setCurrentCloudspace(currentCloudSpaceFromList);
       }
-      $scope.setCurrentCloudspace(currentCloudSpaceFromList);
+
     }
     function getUserAccessOnAccount() {
       if ($scope.currentAccount.userRightsOnAccount) {
