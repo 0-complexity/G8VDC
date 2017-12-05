@@ -54,7 +54,7 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                                             Login: {[machine.accounts[0].login]}
                                         </span>
                                         <div tourtip="Initial login credentials, this is an admin user. Linux: Use sudo to execute commands with root privileges. Windows login is an administrator user.">
-                                            Password: 
+                                            Password:
                                             <span class="margin-left-xlarge margin-top-small">
                                             <a ng-hide="passwordHidden" ng-click="passwordHidden = true" title="Show password" class="margin-right-small"><i class="fa fa-eye"></i></a>
                                             <span ng-show="passwordHidden">{[machine.accounts[0].password]}</span>
@@ -158,6 +158,7 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                   Rebuild
               </a>
           </li> -->
+          <!--
           <li ng-show="currentUser.acl.account > 1 &&  machine.locked == false">
                   <a class="forTip" ng-click="convertToTemplate()" ng-class="{'action-disabled': machine.locked != false}" tourtip="Cconvert your machine into a template..">
                       <i class="fa fa-copy"></i>
@@ -182,6 +183,7 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                   </div>
               </script>
           </li>
+        -->
           <li ng-show="currentUser.acl.cloudspace > 1 && machine.locked == false">
                   <a ng-click="resize(currentSpace, machine.status)"
                      ng-class="{'opacity4 cursor-default': machine.status !== 'HALTED' }"
