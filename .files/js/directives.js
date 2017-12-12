@@ -44,6 +44,14 @@ angular.module('cloudscalers.directives', [])
                   });
         rfb.connect(scope.connectioninfo.host, scope.connectioninfo.port, '', scope.connectioninfo.path);
         scope.rfb = rfb;
+          $('html').click(function() {
+              rfb.get_keyboard().set_focused(false);
+          });
+          
+          $('#noVNC_status_bar').click(function(event){
+              event.stopPropagation();
+              rfb.get_keyboard().set_focused(true);
+          });
       };
 
       var disconnect = function() {
