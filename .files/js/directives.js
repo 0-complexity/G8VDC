@@ -6,7 +6,7 @@ angular.module('cloudscalers.directives', [])
     restrict: 'A',
     link: function(scope, elem, attrs) {
       scope.showPlaceholder = false;
-      var updateState = function(rfb, state) {
+      var updateState = function(rfb, state, oldstate, mesg) {
         var s;
         var cad;
         var level;
@@ -33,7 +33,8 @@ angular.module('cloudscalers.directives', [])
       var connect = function() {
         if (scope.rfb) {return;}
         scope.showPlaceholder = false;
-        var rfb = new RFB({'target': $D('noVNC_canvas'),
+        try {
+          rfb = new RFB({'target': $D('noVNC_canvas'),
                     'encrypt': window.location.protocol === 'https:',
                     'repeaterID': '',
                     'true_color': true,
@@ -42,6 +43,10 @@ angular.module('cloudscalers.directives', [])
                     'view_only': false,
                     'updateState': updateState
                   });
+                } catch (exc) {
+                  updateState(null, 'fatal', null, 'Unable to create RFB client -- ' + exc);
+                  return; // don't continue trying to connect
+              }
         rfb.connect(scope.connectioninfo.host, scope.connectioninfo.port, '', scope.connectioninfo.path);
         scope.rfb = rfb;
           $('html').click(function() {
