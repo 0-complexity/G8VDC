@@ -244,10 +244,6 @@
     }
 
     function resize(currentSpace, status) {
-      if (status !== 'HALTED') {
-        return;
-      }
-
       var sizes = $scope.sizes;
       var initialSizeId = $scope.machine.sizeid;
 
