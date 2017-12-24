@@ -21,9 +21,15 @@ angular.module('cloudscalers.controllers')
             );
 
       $scope.sendText = function(rfb, text) {
-        for (var i = 0; i < text.length; i++) {
-          rfb.sendKey((text.charCodeAt(i)), true);
+        function sendchar() {
+            var chr = text[0];
+            text = text.slice(1);
+            rfb.sendKey(chr.charCodeAt(0));
+            if (text.length > 0) {
+                setTimeout(sendchar, 50);
+            }
         }
+        sendchar();
       };
 
       $scope.$watch('machineConsoleUrlResult', function(newvalue, oldvalue, token, console_uri) {
