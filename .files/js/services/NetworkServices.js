@@ -35,10 +35,11 @@ angular.module('cloudscalers.services')
         }
       );
     },
-    updatePortforward: function(cloudspaceId, id, ip, publicPort, machineId, localPort, protocol) {
+    updatePortforward: function(cloudspaceId, sourcePublicIp, sourcePublicPort, sourceProtocol, ip, publicPort, machineId, localPort, protocol) {
       var data = {cloudspaceId: cloudspaceId, publicIp: ip, publicPort: publicPort,
-        id: id, machineId: machineId, localPort: localPort, protocol: protocol};
-      return $http.post(cloudspaceconfig.apibaseurl + '/portforwarding/update', data)
+        sourcePublicIp: sourcePublicIp, sourcePublicPort: sourcePublicPort, sourceProtocol: sourceProtocol,
+        machineId: machineId, localPort: localPort, protocol: protocol};
+      return $http.post(cloudspaceconfig.apibaseurl + '/portforwarding/updateByPort', data)
     .then(
         function(result) {
           return result;
