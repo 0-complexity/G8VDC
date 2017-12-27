@@ -167,7 +167,8 @@
 
       $scope.update = function() {
           $scope.editRule.action = 'update';
-          Networks.updatePortforward($scope.currentSpace.id, $scope.editRule.id,
+          Networks.updatePortforward($scope.currentSpace.id, $scope.editRule.sourcePublicIp,
+            $scope.editRule.sourcePublicPort, $scope.editRule.sourceProtocol,
             $scope.editRule.ip, $scope.editRule.publicPort, $scope.editRule.VM.id,
             $scope.editRule.localPort, $scope.editRule.protocol).then(
               function(result) {
@@ -197,10 +198,13 @@
       var editRule = {
           id: index.id,
           ip: selectForwardRule.publicIp,
+          sourcePublicIp: selectForwardRule.publicIp,
+          sourcePublicPort: selectForwardRule.publicPort,
           publicPort: selectForwardRule.publicPort,
           VM: {'name': selectForwardRule.machineName , 'id': selectForwardRule.machineId},
           localPort: selectForwardRule.localPort,
-          protocol: selectForwardRule.protocol
+          protocol: selectForwardRule.protocol,
+          sourceProtocol: selectForwardRule.protocol
         };
 
       var modalInstance = $modal.open({
