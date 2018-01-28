@@ -96,6 +96,12 @@
                         </select>
                       </div>
                     </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="inputNewCloudSpacePrivateNetwork">Private Network</label>
+                      <div class="controls col-sm-9">
+                        <input class="form-control" ng-model="newCloudSpace.privatenetwork" id="inputNewCloudSpacePrivateNetwork" type="text" class="input-large" placeholder="192.168.103.0/24"/>
+                      </div>
+                    </div>
                     <em ng-show="cloudspaces.length == 0">You should have at least one CloudSpace.</em>
                   </div>
                   <div class="modal-footer">

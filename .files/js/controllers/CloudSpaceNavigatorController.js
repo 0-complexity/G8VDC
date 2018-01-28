@@ -115,7 +115,8 @@
         $modalInstance.close({
           name: $scope.newCloudSpace.name,
           accountId: $scope.newCloudSpace.account.id,
-          selectedLocation: $scope.selectedLocation
+          selectedLocation: $scope.selectedLocation,
+          privatenetwork: $scope.newCloudSpace.privatenetwork
         });
       };
       $scope.cancel = function() {
@@ -138,7 +139,7 @@
 
       modalInstance.result.then(function(space) {
         LoadingDialog.show('Creating cloudspace');
-        CloudSpace.create(space.name, space.accountId, $scope.currentUser.username, space.selectedLocation)
+        CloudSpace.create(space.name, space.accountId, $scope.currentUser.username, space.selectedLocation, space.privatenetwork)
         .then(function(cloudspaceId) {
           //Wait a second, consistency on the api is not garanteed before that
           $timeout(function() {
