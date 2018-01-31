@@ -15,31 +15,10 @@
     $scope.addUser = addUser;
     $scope.deleteUser = deleteUser;
     $scope.loadEditUser = loadEditUser;
-    $scope.resetSearchQuery = resetSearchQuery;
-    // autocomplete configuration object
-    $scope.autocompleteOptions = {
-      shadowInput: true,
-      highlightFirst: true,
-      boldMatches: true,
-      delay: 0,
-      searchMethod: 'search',
-      templateUrl: 'autocomplete-result-template.html',
-      onSelect: function(item, event) {
-        event.preventDefault();
-        $scope.$apply(function() {
-          $scope.newUser.nameOrEmail = item.value;
-        });
-      },
-      onEnter: function(event, state) {
-        if (state.popupOpen === true) {
-          event.preventDefault();
-        }
-      }
-    };
+    $scope.resetuserName = resetuserName;
     $scope.emailMode = false;
-    $scope.search = search;
     // Binding and Watch
-    $scope.$watch('searchQuery', searchQuery);
+    $scope.$watch('userName', userName);
 
     // Initialization: Functions invokation logic
     $scope.resetUser();
@@ -91,7 +70,7 @@
             $scope.loadSpaceAcl()
             .then(function() {
               $scope.resetUser();
-              $scope.resetSearchQuery();
+              $scope.resetuserName();
             });
           }, function(reason) {
             if (reason.status === 404) {
@@ -187,46 +166,18 @@
       var re = new RegExp(regexString);
       return re.test(str);
     }
-    function search(query, deferred) {
-      CloudSpace.searchAcl(query)
-      .then(function(data) {
-        // format data
-        var results = [];
-
-        _.each(data, function(item) {
-          results.push({
-            gravatarurl: item.gravatarurl,
-            value: item.username
-          });
-        });
-
-        // filter: remove existing users from suggestions
-        results = _.filter(results, function(item) {
-          return _.isUndefined(_.find($scope.currentSpace.acl, function(user) {
-            return user.userGroupId === item.value;
-          }));
-        });
-
-        // var emailInvited = _.find($scope.currentSpace.acl, function(user) {
-        //   return user.userGroupId === query;
-        // });
-
-        // resolve the deferred object
-        deferred.resolve({results: results});
-      });
-    }
-    function resetSearchQuery() {
+    function resetuserName() {
       $scope.emailMode = false;
-      $scope.searchQuery = '';
+      $scope.userName = '';
     }
-    function searchQuery(searchQuery) {
-      $scope.newUser.nameOrEmail = searchQuery;
+    function userName(userName) {
+      $scope.newUser.nameOrEmail = userName;
 
-      if (_.isUndefined(searchQuery)) {
+      if (_.isUndefined(userName)) {
         return;
       }
 
-      if (validateEmail(searchQuery)) {
+      if (validateEmail(userName)) {
         $scope.emailMode = true;
       } else {
         $scope.emailMode = false;

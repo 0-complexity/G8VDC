@@ -10,8 +10,8 @@
             <th class="username-text-container">
                 <div id="szn-autocomplete-wrap">
                     <!-- <div class="bg form-control"></div> -->
-                    <input id="searchQuery" ng-model="searchQuery" szn-autocomplete="autocompleteOptions" placeholder="Search usernames..." />
-                    <i class="fa fa-times btn-reset-email" ng-show="searchQuery.length" ng-click="resetSearchQuery()">
+                    <input id="userName" ng-model="userName" placeholder="Enter user name or email to add" />
+                    <i class="fa fa-times btn-reset-email" ng-show="userName.length" ng-click="resetuserName()">
                     </i>
                 </div>
             </th>
@@ -21,7 +21,7 @@
                 </select>
             </th>
             <th class="txt-center actions-col">
-                <button ng-if="!emailMode" type="submit" class="btn" ng-click="addUser()" ng-disabled="!searchQuery.length">
+                <button ng-if="!emailMode" type="submit" class="btn" ng-click="addUser()" ng-disabled="!userName.length">
                     Add
                 </button>
             </th>
