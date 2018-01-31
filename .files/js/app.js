@@ -104,9 +104,9 @@ cloudscalers
       templateUrl: 'Portal/Docs/TechnicalTutorials/enable-root-access-on-ubuntu-over-ssh.html',
       title: 'Enable Root Access on ubuntu over SSH'
     });
-    $routeProvider.when('/Docs/getting-started-with-jumpscale', {
-      templateUrl: 'Portal/Docs/TechnicalTutorials/getting-started-with-jumpscale.html',
-      title: 'Getting Started with JumpScale'
+    $routeProvider.when('/Docs/using-the-api', {
+      templateUrl: 'Portal/Docs/TechnicalTutorials/using-the-api.html',
+      title: 'Using the api'
     });
     $routeProvider.when('/Docs/how-to-configure-ubuntu-to-connect-to-openvpn', {
       templateUrl: 'Portal/Docs/TechnicalTutorials/how-to-configure-ubuntu-to-connect-to-openvpn/tutorial.html',
