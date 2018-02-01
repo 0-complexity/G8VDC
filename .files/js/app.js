@@ -76,21 +76,6 @@ cloudscalers
       controller: 'BillingController',
       title: 'Billing'
     });
-    $routeProvider.when('/Profile', {
-      templateUrl: 'Portal/Admin/Profile/Profile.html',
-      controller: 'UsersController',
-      title: 'Profile'
-    });
-    $routeProvider.when('/ResetPassword', {
-      templateUrl: 'Public/Authentication/Login/ResetPassword.html',
-      controller: 'ResetPasswordController',
-      title: 'ResetPassword'
-    });
-    $routeProvider.when('/Activation', {
-      templateUrl: 'Activation.html',
-      controller: 'ActivateUserController',
-      title: 'Activation'
-    });
     // Docs
     $routeProvider.when('/Docs', {
       templateUrl: 'Portal/Docs/Docs.html',
