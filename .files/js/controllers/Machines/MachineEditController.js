@@ -24,7 +24,7 @@
     $scope.rollbackSnapshot = rollbackSnapshot;
     $scope.deleteSnapshot = deleteSnapshot;
     $scope.cloneMachine = cloneMachine;
-    $scope.convertToTemplate = convertToTemplate;
+    $scope.createTemplate = createTemplate;
     $scope.sharedstate = {};
     $scope.sharedstate.refreshSpinner = false;
     $scope.refreshData = refreshData;
@@ -453,10 +453,10 @@
         };
     }
 
-    function ConvertToTemplateController($scope, $modalInstance) {
-      $scope.convertToTemplate = {name: ''};
+    function CreateTemplateController($scope, $modalInstance) {
+      $scope.createTemplate = {name: ''};
       $scope.ok = function() {
-          $modalInstance.close($scope.convertToTemplate.name);
+          $modalInstance.close($scope.createTemplate.name);
           $location.path('/list');
         };
       $scope.cancel = function() {
@@ -491,16 +491,16 @@
       });
     }
 
-    function convertToTemplate() {
+    function createTemplate() {
       var modalInstance = $modal.open({
-        templateUrl: 'convertToTemplateDialog.html',
-        controller: ConvertToTemplateController,
+        templateUrl: 'createTemplateDialog.html',
+        controller: CreateTemplateController,
         resolve: {}
       });
 
       modalInstance.result.then(function(templatename) {
-        LoadingDialog.show('Converting To Template');
-        Machine.convertToTemplate($scope.machine, templatename).then(
+        LoadingDialog.show('Creating Template');
+        Machine.createTemplate($scope.machine, templatename).then(
           function() {
             LoadingDialog.hide();
             $scope.machine.locked = true;

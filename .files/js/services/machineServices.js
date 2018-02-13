@@ -125,9 +125,9 @@ angular.module('cloudscalers.services')
           return $q.reject(reason);
         });
     },
-    convertToTemplate: function(machine, templatename) {
-      var data = {machineId: machine.id, templatename: templatename};
-      var url = cloudspaceconfig.apibaseurl + '/machines/convertToTemplate';
+    createTemplate: function(machine, templatename) {
+      var data = {machineId: machine.id, templateName: templatename};
+      var url = cloudspaceconfig.apibaseurl + '/machines/createTemplate';
       return $http.post(url, data).then(
         function(result) {
           return result.data;

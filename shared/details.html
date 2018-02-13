@@ -158,32 +158,31 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                   Rebuild
               </a>
           </li> -->
-          <!--
+
           <li ng-show="currentUser.acl.account > 1 &&  machine.locked == false">
-                  <a class="forTip" ng-click="convertToTemplate()" ng-class="{'action-disabled': machine.locked != false}" tourtip="Cconvert your machine into a template..">
+                  <a class="forTip" ng-click="createTemplate()" ng-class="{'action-disabled': machine.locked != false}" tourtip="Create a template..">
                       <i class="fa fa-copy"></i>
-                      Convert To Template
+                      Create a Template
                   </a>
-                  <script type="text/ng-template" id="convertToTemplateDialog.html">
+                  <script type="text/ng-template" id="createTemplateDialog.html">
                       <div class="modal-header">
-                          <h3>Convert To Template</h3>
+                          <h3>Create a Template</h3>
                   </div>
                   <div class="modal-body">
                       <ul>
-                          Name: <input ng-model="convertToTemplate.name" type="text" class="input-large" />
+                          Name: <input ng-model="createTemplate.name" type="text" class="input-large" />
                       </ul>
                       <div class="alert alert-warning margin-top-large">
-                      This action will convert your current Virtual Machine into a template.
-                      The current Virtual Machine will not be available any longer.
+                      This action will create a template from this machine.
                       </div>
                   </div>
                   <div class="modal-footer">
-                      <button class="btn btn-primary ok" ng-click="ok()">Convert To Template</button>
+                      <button class="btn btn-primary ok" ng-click="ok()">Create a Template</button>
                       <button class="btn cancel" ng-click="cancel()">Cancel</button>
                   </div>
               </script>
           </li>
-        -->
+
           <li ng-show="currentUser.acl.cloudspace > 1 && machine.locked == false">
               <a ng-click="resize(currentSpace, machine.status)">
                       <i class="fa fa-expand"></i>
