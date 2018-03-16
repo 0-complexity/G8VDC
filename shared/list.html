@@ -41,8 +41,8 @@
               <a ng-href="#/edit/{[machine.id]}" title="{[machine.description]}">{[machine.name]}</a>
             </td>
             <td class="hidden">{[machine.ip]}</td>
-            <td>{[numeral(machineinfo[machine.id].size.memory * 1024 * 1024).format('0 b')]}</td>
-            <td>{[machineinfo[machine.id].size.vcpus]} <ng-pluralize count="machineinfo[machine.id].size.vcpus" when="{'one': 'core', 'other': 'cores'}"></ng-pluralize></td>
+            <td>{[numeral(machine.memory * 1024 * 1024).format('0 b')]}</td>
+            <td>{[machine.vcpus]} <ng-pluralize count="machineinfo[machine.id].size.vcpus" when="{'one': 'core', 'other': 'cores'}"></ng-pluralize></td>
             <td>{[numeral(machineinfo[machine.id].storage * 1024 * 1024 * 1024).format('0 b')]}</td>
           </tr>
         </tbody>

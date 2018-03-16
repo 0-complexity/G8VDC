@@ -67,13 +67,13 @@ Your Defense shield assigns a fix IP address during the initial OS boot.">
                             <li>
                                 <div class="row">
                                     <div class="span3 line-height">CPU</div>
-                                    <div class="span9 clear-none inline-block margin-vertical-small">{[machineinfo.size.vcpus]} <ng-pluralize count="machineinfo.size.vcpus" when="{'one': 'core', 'other': 'cores'}"></ng-pluralize></div>
+                                    <div class="span9 clear-none inline-block margin-vertical-small">{[machine.vcpus]} <ng-pluralize count="machineinfo.size.vcpus" when="{'one': 'core', 'other': 'cores'}"></ng-pluralize></div>
                                 </div>
                             </li>
                             <li>
                                 <div class="row">
                                     <div class="span3 line-height">Memory</div>
-                                    <div class="span9 clear-none inline-block margin-vertical-small">{[numeral(machineinfo.size.memory * 1024 *1024).format('0 b')]}</div>
+                                    <div class="span9 clear-none inline-block margin-vertical-small">{[numeral(machine.memory * 1024 *1024).format('0 b')]}</div>
                                 </div>
                             </li>
                             <li>
