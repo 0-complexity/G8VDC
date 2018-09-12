@@ -210,8 +210,8 @@ angular.module('cloudscalers.services')
         }
       );
     },
-    rollbackSnapshot: function(machineId, epoch) {
-      var data = {machineId: machineId, epoch: epoch};
+    rollbackSnapshot: function(machineId, name) {
+      var data = {machineId: machineId, name: name};
       var url = cloudspaceconfig.apibaseurl + '/machines/rollbackSnapshot';
       return $http.post(url, data).then(
         function(result) {
@@ -222,8 +222,8 @@ angular.module('cloudscalers.services')
         }
       );
     },
-    deleteSnapshot: function(machineId, epoch) {
-      var data = {machineId: machineId, epoch: epoch};
+    deleteSnapshot: function(machineId, name) {
+      var data = {machineId: machineId, name: name};
       var url = cloudspaceconfig.apibaseurl + '/machines/deleteSnapshot';
       return $http.post(url, data).then(
         function(result) {
