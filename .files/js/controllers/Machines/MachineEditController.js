@@ -398,7 +398,7 @@
 
       modalInstance.result.then(function() {
           LoadingDialog.show('Rolling back snapshot');
-          Machine.rollbackSnapshot($scope.machine.id, snapshot.epoch).then(
+          Machine.rollbackSnapshot($scope.machine.id, snapshot.name).then(
             function() {
               LoadingDialog.hide();
               for (var i = $scope.snapshots.length - 1; i > 0; i--) {
@@ -430,10 +430,10 @@
 
       modalInstance.result.then(function() {
           LoadingDialog.show('Deleting snapshot');
-          Machine.deleteSnapshot($scope.machine.id, snapshot.epoch).then(
+          Machine.deleteSnapshot($scope.machine.id, snapshot.name).then(
             function() {
               LoadingDialog.hide();
-              var removedSnapshot = _.where($scope.snapshots, {epoch: snapshot.epoch})[0];
+              var removedSnapshot = _.where($scope.snapshots, {name: snapshot.name})[0];
               $scope.snapshots.splice($scope.snapshots.indexOf(removedSnapshot) , 1);
             }, function(reason) {
               LoadingDialog.hide();
