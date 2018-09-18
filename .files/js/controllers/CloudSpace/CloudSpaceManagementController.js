@@ -10,6 +10,7 @@
 
     $scope.getLocationInfo = getLocationInfo;
     $scope.deleteCloudspace = deleteCloudspace;
+    $scope.updateCloudspace = updateCloudspace;
 
     $scope.$watch('currentSpace.id', currentSpaceId);
 
@@ -33,6 +34,34 @@
         }
       );
     }
+
+    function updateCloudspace() {
+      var modalInstance = $modal.open({
+        templateUrl: 'updateCloudspace.html',
+        controller: function($scope, $modalInstance) {
+          $scope.submit = function(result) {
+            $modalInstance.close(result.name);
+          };
+          $scope.cancelUpdate = function() {
+            $modalInstance.dismiss('cancel');
+          };
+        },
+        resolve: {
+        }
+      });
+      modalInstance.result.then(function(name) {
+        CloudSpace.update($scope.currentSpace.id, name)
+        .then(
+          function() {
+            $scope.currentSpace.name = name;
+          }, function(reason) {
+            $ErrorResponseAlert(reason);
+          }
+        );
+      });
+    }
+
+
 
     function deleteCloudspace() {
       var modalInstance = $modal.open({
