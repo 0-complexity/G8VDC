@@ -25,6 +25,22 @@
       			</div>
     		</div>
 				<hr class="margin-top-large margin-bottom-large">
+				<button class="btn margin-top-large clear-both left" ng-click="updateCloudspace()" ng-show="currentUser.acl.cloudspace == 3"><i class="fa fa-edit"></i> Rename Cloud Space</button>
+				<script type="text/ng-template" id="updateCloudspace.html">
+					<form name="destroyform" ng-submit="submit(form)">
+						<div class="modal-header">
+							<h3>Rename Cloud Space</h3>
+						</div>
+						<div class="modal-body">
+							Name:
+                            <input id="name" ng-model="form.name" type="text" class="input-large" placeholder="Name" required/>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary ok">Ok</button>
+							<button type="button" class="btn" ng-click="cancelUpdate()">Cancel</button>
+						</div>
+					</form>
+				</script>
 				<button class="btn margin-top-large clear-both left" ng-click="deleteCloudspace()" ng-show="currentUser.acl.cloudspace == 3"><i class="fa fa-trash"></i> Delete Cloud Space</button>
 				<script type="text/ng-template" id="deleteCloudSpaceDialog.html">
 					<form name="destroyform" ng-submit="cancelDeletion()">

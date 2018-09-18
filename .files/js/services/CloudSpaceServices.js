@@ -131,6 +131,18 @@ angular.module('cloudscalers.services')
           return $q.reject(reason);
         }
       );
-    }
+    },
+    update: function(cloudspaceId, name) {
+      var data = {cloudspaceId: cloudspaceId, name: name};
+      return $http.post(cloudspaceconfig.apibaseurl + '/cloudspaces/update', data)
+      .then(
+        function(result) {
+          return result.data;
+        },
+        function(reason) {
+          return $q.reject(reason);
+        }
+      );
+    },
   };
 });
